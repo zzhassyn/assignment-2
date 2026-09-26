@@ -28,6 +28,20 @@ public class DynamicArray {
         return false;
     }
 
+    public int remove(int index) {
+        checkIndex(index);
+
+        int removedValue = data[index];
+
+        for (int i = index; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+
+        size--;
+
+        return removedValue;
+    }
+
     public void add(int index, int value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);

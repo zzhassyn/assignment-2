@@ -5,12 +5,14 @@ public class Tests {
         array.add(10);
         array.add(20);
         array.add(30);
+        array.add(40);
 
-        array.add(1, 99);
+        int removed = array.remove(1);
 
+        System.out.println("Removed: " + removed);
         System.out.println(array.get(0));
         System.out.println(array.get(1));
         System.out.println(array.get(2));
-        System.out.println(array.get(3));
+        System.out.println("Size: " + array.size());
     }
 }

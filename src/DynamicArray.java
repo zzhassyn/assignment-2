@@ -13,6 +13,15 @@ public class DynamicArray {
         size++;
     }
 
+    public int get(int index) {
+        checkIndex(index);
+        return data[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
     private void ensureCapacity() {
         if (size == data.length) {
             int[] newData = new int[data.length * 2];
@@ -25,7 +34,9 @@ public class DynamicArray {
         }
     }
 
-    public int size() {
-        return size;
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
     }
 }

@@ -6,6 +6,8 @@ public class Tests {
         array.add(20);
         array.add(30);
 
-        System.out.println(array.size());
+        System.out.println(array.get(0));
+        System.out.println(array.get(1));
+        System.out.println(array.get(2));
     }
 }

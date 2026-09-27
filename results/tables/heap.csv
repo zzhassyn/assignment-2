@@ -1,0 +1,9 @@
+n,operation,averageTimeNs,averageComparisons,complexity
+100,insert,30040,217,O(log n)
+100,extractMin,74660,858,O(log n)
+1000,insert,86340,2188,O(log n)
+1000,extractMin,216120,14995,O(log n)
+10000,insert,1313100,22582,O(log n)
+10000,extractMin,1799480,216644,O(log n)
+100000,insert,2773840,229018,O(log n)
+100000,extractMin,15937840,2831804,O(log n)

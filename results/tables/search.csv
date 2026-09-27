@@ -1,0 +1,9 @@
+n,structure,averageTimeNs,averageComparisons,complexity
+100,DynamicArray,613180,78252,Theta(n)
+100,LinkedList,489540,78252,Theta(n)
+1000,DynamicArray,1785980,793961,Theta(n)
+1000,LinkedList,2301020,793961,Theta(n)
+10000,DynamicArray,5164220,7761001,Theta(n)
+10000,LinkedList,19849320,7761001,Theta(n)
+100000,DynamicArray,35052280,77643801,Theta(n)
+100000,LinkedList,229602620,77643801,Theta(n)

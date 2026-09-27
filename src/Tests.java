@@ -1,18 +1,22 @@
 public class Tests {
     public static void main(String[] args) {
-        DynamicArray array = new DynamicArray();
+        LinkedList list = new LinkedList();
 
-        array.add(10);
-        array.add(20);
-        array.add(30);
-        array.add(40);
+        list.add(10);
+        list.add(20);
+        list.add(30);
 
-        int removed = array.remove(1);
+        list.add(1, 99);
 
-        System.out.println("Removed: " + removed);
-        System.out.println(array.get(0));
-        System.out.println(array.get(1));
-        System.out.println(array.get(2));
-        System.out.println("Size: " + array.size());
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
+        System.out.println(list.get(3));
+
+        System.out.println(list.remove(1));
+        System.out.println(list.size());
+
+        System.out.println(list.contains(20));
+        System.out.println(list.contains(99));
     }
 }

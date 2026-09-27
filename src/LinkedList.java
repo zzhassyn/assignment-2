@@ -12,12 +12,15 @@ public class LinkedList {
 
     private Node head;
     private int size;
+
     private long comparisonCount;
+    private long accessCount;
 
     public LinkedList() {
         head = null;
         size = 0;
         comparisonCount = 0;
+        accessCount = 0;
     }
 
     public void add(int value) {
@@ -38,13 +41,71 @@ public class LinkedList {
         size++;
     }
 
+    public void add(int index, int value) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+
+        Node newNode = new Node(value);
+
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node current = head;
+            accessCount++;
+
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+                accessCount++;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        size++;
+    }
+
+    public int remove(int index) {
+        checkIndex(index);
+
+        int removedValue;
+
+        if (index == 0) {
+            accessCount++;
+
+            removedValue = head.value;
+            head = head.next;
+        } else {
+            Node current = head;
+            accessCount++;
+
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+                accessCount++;
+            }
+
+            accessCount++;
+
+            removedValue = current.next.value;
+            current.next = current.next.next;
+        }
+
+        size--;
+
+        return removedValue;
+    }
+
     public int get(int index) {
         checkIndex(index);
 
         Node current = head;
+        accessCount++;
 
         for (int i = 0; i < index; i++) {
             current = current.next;
+            accessCount++;
         }
 
         return current.value;
@@ -66,64 +127,29 @@ public class LinkedList {
         return false;
     }
 
-    public void add(int index, int value) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index);
-        }
-
-        Node newNode = new Node(value);
-
-        if (index == 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node current = head;
-
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-
-            newNode.next = current.next;
-            current.next = newNode;
-        }
-
-        size++;
-    }
-
-    public int remove(int index) {
-        checkIndex(index);
-
-        int removedValue;
-
-        if (index == 0) {
-            removedValue = head.value;
-            head = head.next;
-        } else {
-            Node current = head;
-
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-
-            removedValue = current.next.value;
-            current.next = current.next.next;
-        }
-
-        size--;
-
-        return removedValue;
+    public int size() {
+        return size;
     }
 
     public long getComparisonCount() {
         return comparisonCount;
     }
 
+    public long getAccessCount() {
+        return accessCount;
+    }
+
     public void resetComparisonCount() {
         comparisonCount = 0;
     }
 
-    public int size() {
-        return size;
+    public void resetAccessCount() {
+        accessCount = 0;
+    }
+
+    public void resetCounters() {
+        comparisonCount = 0;
+        accessCount = 0;
     }
 
     private void checkIndex(int index) {

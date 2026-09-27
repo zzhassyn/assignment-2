@@ -8,15 +8,9 @@ public class Tests {
 
         list.add(1, 99);
 
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
-        System.out.println(list.get(2));
-        System.out.println(list.get(3));
-
-        System.out.println(list.remove(1));
-        System.out.println(list.size());
-
-        System.out.println(list.contains(20));
-        System.out.println(list.contains(99));
+        System.out.println(list.get(1)); // 99
+        System.out.println(list.contains(20)); // true
+        System.out.println(list.remove(1)); // 99
+        System.out.println(list.size()); // 3
     }
 }
